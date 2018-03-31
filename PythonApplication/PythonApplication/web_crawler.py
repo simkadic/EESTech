@@ -12,7 +12,7 @@ def trade_spider(max_pages):
         plain_text = source_code.text
         soup = BeautifulSoup(plain_text, "html.parser")
         for link in soup.findAll('a', {'class': 'search_result_title'}):
-            global href
+            #global href
             href = "https://www.discogs.com" + link.get('href')
             print(href)
         page += 1
