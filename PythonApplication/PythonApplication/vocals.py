@@ -9,11 +9,9 @@ def vocals(href):
     
     for span in soup.find_all('span', {'class': 'role'}):
         if "Vocals" in span.text:
-            vocals = soup.find('a', {'class': 'rollover_link'})
-            children = vocals.findChildren()
-            for child in children:
-                print(child)
-           # print(link.text)
+            parent = span.parent
+            for vocallist in parent.find_all('a', {'class': 'rollover_link'}):
+                print(vocallist.text)
 
  
 vocals('https://www.discogs.com/Zdravko-Čolić-Kad-Pogledaš-Me-Preko-Ramena/release/6792758')
