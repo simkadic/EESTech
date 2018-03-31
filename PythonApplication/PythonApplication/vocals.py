@@ -11,6 +11,7 @@ def vocals(href):
             parent = span.parent
             for vocallist in parent.find_all('a', {'class': 'rollover_link'}):
                 vocalists.append(vocalist)
+                
     return vocalists
  
 vocals('https://www.discogs.com/Nikolija-101-Propušteni-Poziv/release/9843081')
