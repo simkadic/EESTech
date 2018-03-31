@@ -1,11 +1,8 @@
-from bs4 import BeautifulSoup
-import requests
+from soup_creator import create_soup
 
 
 def vocals(href):
-    source_code = requests.get(href)
-    plain_text = source_code.text
-    soup = BeautifulSoup(plain_text, "html.parser")
+    soup = create_soup(href)
     
     for span in soup.find_all('span', {'class': 'role'}):
         if str("Vocals").lower() in span.text.lower():
