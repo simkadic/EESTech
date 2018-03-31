@@ -8,10 +8,10 @@ def vocals(href):
     soup = BeautifulSoup(plain_text, "html.parser")
     
     for span in soup.find_all('span', {'class': 'role'}):
-        if "Vocals" in span.text:
+        if str("Vocals").lower() in span.text.lower():
             parent = span.parent
             for vocallist in parent.find_all('a', {'class': 'rollover_link'}):
                 print(vocallist.text)
 
  
-vocals('https://www.discogs.com/Zdravko-Čolić-Kad-Pogledaš-Me-Preko-Ramena/release/6792758')
+vocals('https://www.discogs.com/Nikolija-101-Propušteni-Poziv/release/9843081')
