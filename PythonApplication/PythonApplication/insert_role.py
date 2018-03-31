@@ -1,4 +1,4 @@
-def func(album,author):
+def func(arg):
     import mysql.connector
     from mysql.connector import errorcode
 
@@ -23,10 +23,7 @@ def func(album,author):
     else:
         cursor = conn.cursor()
         cursor.execute("use eestec;")
-        s = "INSERT INTO vocal (album_id,author_id) "
-        s += "SELECT album_id, author_id FROM author,album WHERE "
-        s += "author_name='%s\' " % (album)
-        s += "and album_name='%s\';" % (author)
+        s = "INSERT INTO role (role_name) VALUES('%s\');" % (arg)
         print(s)
         cursor.execute(s)
         # Cleanup
