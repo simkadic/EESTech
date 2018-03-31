@@ -1,8 +1,4 @@
-from soup_creator import create_soup
-
-
-def parse_songs(href):
-    soup = create_soup(href)
+def parse_songs(soup):
     titles = []
     durations = []
 

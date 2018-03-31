@@ -1,10 +1,5 @@
-from soup_creator import create_soup
-
-
-def vocals(href):
-    soup = create_soup(href)
+def vocals(soup):
     vocalists = []
-    
     
     for span in soup.find_all('span', {'class': 'role'}):
         if str("Vocals").lower() in span.text.lower():

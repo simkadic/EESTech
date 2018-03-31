@@ -1,8 +1,4 @@
-from soup_creator import create_soup
-
-
-def credits(href):
-    soup = create_soup(href)
+def credits(soup):
     role = []; people = []; dict = {}
     for span in soup.find_all('span', {'class': 'role'}):
        role.append(span.text)
@@ -10,5 +6,5 @@ def credits(href):
        people.append(a.text.replace('\n', ''))
     for i in range(len(role)):
         dict[role[i]] = people[i]
-#TODO:Split roles since one person has more than one role sometimes 
+    #TODO:Split roles since one person has more than one role sometimes
     return dict

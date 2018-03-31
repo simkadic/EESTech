@@ -1,8 +1,4 @@
-from soup_creator import create_soup
-
-
-def author_and_title(href):
-    soup = create_soup(href)
+def author_and_title(soup):
     for id in soup.findAll('h1', {'id': 'profile_title'}):
         title = str(id.text).strip().replace('\n', '').split('\u200e–')
         ret = []

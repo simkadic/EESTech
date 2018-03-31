@@ -1,13 +1,10 @@
-from soup_creator import create_soup
 
-
-def album_labels(href):
-    soup = create_soup(href)
+def album_labels(soup):
     keys=[]; vals=[]; dict={}
     for div in soup.find_all('div', {'class': 'head'}):
        keys.append(div.text)
     for div in soup.find_all('div', {'class': 'content'}):
-       vals.append(div.text.replace('\n', ''))
+       vals.append(div.text.replace('\n', '').strip())
     for i in range(len(keys)):
         dict[keys[i]] = vals[i]
     # TODO: razdvojiti stilove i/ili zanrove
