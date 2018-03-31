@@ -1,4 +1,5 @@
 from soup_creator import create_soup
+from get_next_page import get_next_page_with_delay
 
 
 def trade_spider():
