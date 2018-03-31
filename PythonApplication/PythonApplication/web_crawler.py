@@ -1,21 +1,17 @@
-import requests
-from bs4 import BeautifulSoup
+from soup_creator import create_soup
 
 
-#max_pages = 26662
-
-def trade_spider(max_pages):
-    page = 1
-    while page <= max_pages:
-        url = 'https://www.discogs.com/search/?type=release&page=' + str(page) + '&country_exact=Serbia'
-        source_code = requests.get(url)
-        plain_text = source_code.text
-        soup = BeautifulSoup(plain_text, "html.parser")
+def trade_spider():
+    start_url = 'https://www.discogs.com/search/?type=release&limit=250&country_exact=Serbia'
+    page = start_url + '&page=1'
+    while page is not None:
+        soup = create_soup(page)
+        print('linkovi na jednoj strani:')
         for link in soup.findAll('a', {'class': 'search_result_title'}):
-            #global href
             href = "https://www.discogs.com" + link.get('href')
             print(href)
-        page += 1
-        
+        print(page)
+        page = get_next_page_with_delay(page)
 
-trade_spider(1)
+
+trade_spider()
