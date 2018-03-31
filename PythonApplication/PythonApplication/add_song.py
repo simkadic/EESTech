@@ -1,4 +1,4 @@
-def func(album, song, hours, minutes, seconds):
+def func(album, song, minutes, seconds):
     import mysql.connector
     from mysql.connector import errorcode
 
@@ -23,10 +23,10 @@ def func(album, song, hours, minutes, seconds):
     else:
         cursor = conn.cursor()
         cursor.execute("use eestec;")
-        duration = '%02d' % hours + ":" + '%02d' % minutes + ":" + '%02d' % seconds
-        s = "INSERT INTO song (album_id,song_duration,song_title) "
+        s = "INSERT INTO song (album_id,song_minutes,song_seconds,song_title) "
         s += "SELECT album_id, "
-        s += "TIME_FORMAT('%s\', '%%HH:%%MM:%%SS'), " % (duration)
+        s += "%s, " % (minutes)
+        s += "%s, " % (seconds)
         s += "'%s\' " % (song)
         s += "FROM album WHERE "
         s += "album_name='%s\' ;" % (album)
