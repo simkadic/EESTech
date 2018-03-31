@@ -1,7 +1,7 @@
 from soup_creator import create_soup
 
 
-def album_label(href):
+def album_labels(href):
     soup = create_soup(href)
     keys=[]; vals=[]; dict={}
     for div in soup.find_all('div', {'class': 'head'}):
@@ -12,6 +12,3 @@ def album_label(href):
         dict[keys[i]] = vals[i]
     # TODO: razdvojiti stilove i/ili zanrove
     return dict
-
-album_label('https://www.discogs.com/Ansambel-Alojza-Grnjaka-Pri-Nas-Doma/master/1339255')
-

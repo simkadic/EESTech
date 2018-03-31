@@ -14,5 +14,3 @@ def parse_version(href):
         
         print(dict)
         return dict
-
-parse_version('https://www.discogs.com/Ansambel-Alojza-Grnjaka-Pri-Nas-Doma/release/9994716')

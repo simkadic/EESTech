@@ -13,5 +13,3 @@ def vocals(href):
                 vocalists.append(vocalist)
                 
     return vocalists
- 
-vocals('https://www.discogs.com/Nikolija-101-Propušteni-Poziv/release/9843081')

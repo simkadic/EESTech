@@ -12,6 +12,3 @@ def credits(href):
         dict[role[i]] = people[i]
 #TODO:Split roles since one person has more than one role sometimes 
     return dict
-
- 
-credits('https://www.discogs.com/Nikolija-101-Propušteni-Poziv/release/9843081')
