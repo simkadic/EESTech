@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 def trade_spider(max_pages):
     page = 1
     while page <= max_pages:
-        url = 'https://www.discogs.com/search/?type=master&page=' + str(page) + '&country_exact=Serbia'
+        url = 'https://www.discogs.com/search/?type=release&page=' + str(page) + '&country_exact=Serbia'
         source_code = requests.get(url)
         plain_text = source_code.text
         soup = BeautifulSoup(plain_text, "html.parser")
