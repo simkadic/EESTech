@@ -2,8 +2,9 @@ from soup_creator import create_soup
 from get_next_page import get_next_page_with_delay
 
 
-def trade_spider():
-    start_url = 'https://www.discogs.com/search/?type=release&limit=250&country_exact=Serbia'
+def trade_spider(country = "Serbia"):
+    start_url = 'https://www.discogs.com/search/?type=release&limit=250&country_exact=' + country
+    start_url += '&type=release'
     page = start_url + '&page=1'
     while page is not None:
         soup = create_soup(page)
