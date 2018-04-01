@@ -24,8 +24,11 @@
 # import insert_country
 # print(insert_country.func("test"))
 
-import add_song
-print(add_song.func("test", "test", 21, 22))
+import Z2_b
+print(Z2_b.func())
+
+# import add_song
+# print(add_song.func("test", "test", 21, 22))
 
 
 # import insert_version
