@@ -1,4 +1,4 @@
-def func(country, day, month, year, format):
+def func(album, country, day, month, year, format):
     import mysql.connector
     from mysql.connector import errorcode
 
@@ -30,6 +30,8 @@ def func(country, day, month, year, format):
         s += "format_name='%s\' " % (format)
         s += "and release_date=STR_TO_DATE"
         s += "('%s\', '%%d-%%m-%%Y') " % (release_date)
+        s += "and album_id= (select album_id from album "
+        s += "where album_name='%s\') " % album
         s += "and country_id= (select country_id from country "
         s += "where country_name='%s\');" % country
         print(s)
