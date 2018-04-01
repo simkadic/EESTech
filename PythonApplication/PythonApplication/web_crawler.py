@@ -1,6 +1,6 @@
 from soup_creator import create_soup
 from get_next_page import get_next_page_with_delay
-
+from parse_record import parse_record
 
 def trade_spider(country = "Serbia"):
     start_url = 'https://www.discogs.com/search/?type=release&limit=250&country_exact=' + country
@@ -12,6 +12,7 @@ def trade_spider(country = "Serbia"):
         for link in soup.findAll('a', {'class': 'search_result_title'}):
             href = "https://www.discogs.com" + link.get('href')
             print(href)
+            parse_record(create_soup(href))
         print(page)
         page = get_next_page_with_delay(page)
 

@@ -5,7 +5,6 @@ DELAY_CONSTANTS = [1, 6, 3, 3, 6, 12, 8]
 
 
 def get_next_page(url):
-    time.sleep(1)
     soup = create_soup(url)
     link = soup.find('a', {'class': 'pagination_next'})
     if link is None:
