@@ -22,3 +22,6 @@ def connect():
             print(err)
     else:
         return conn
+
+def disconnect(conn):
+    conn.close()

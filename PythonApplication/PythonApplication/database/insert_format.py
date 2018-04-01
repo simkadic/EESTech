@@ -1,27 +1,12 @@
-def func(arg):
-    import mysql.connector
-    from mysql.connector import errorcode
-
-    config = {
-        'host': 'eestec.mysql.database.azure.com',
-        'user': 'mysql@eestec',
-        'password': 'Tesa2018',
-        'database': 'mysql'
-    }
-
-    # Construct connection string
-    try:
-        conn = mysql.connector.connect(**config)
-        print("Connection established")
-    except mysql.connector.Error as err:
-        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-            print("Something is wrong with the user name or password")
-        elif err.errno == errorcode.ER_BAD_DB_ERROR:
-            print("Database does not exist")
-        else:
-            print(err)
-    else:
-        album
+def func(arg, conn):
+        cursor = conn.cursor()
+        cursors.execute('use eestec;')
+        q = "SELECT * from format WHERE format_name=('%s');"
+        cursor.execute(q, arg)
+        cursor.fetchall()
+        row_count = cursor.row_count
+        if(row_count == 0):
+            s = "INSERT INTO format (format_name) VALUES('%s')"
+            cursors.execute(s, arg)
         cursor.close()
-        conn.close()
         return "OK"
