@@ -14,3 +14,7 @@ def parse_record(soup):
     song_titles, song_durations = parse_songs(soup)
     versions_dict = parse_version(soup)
     save_record(album_dict, author, album_title, credits_dict, song_titles, song_durations, versions_dict)
+    #print(versions_dict)
+
+
+#parse_record(create_soup('https://www.discogs.com/Nada-Obri%C4%87-Najve%C4%87i-Hitovi/release/7576499'))

@@ -17,4 +17,4 @@ def trade_spider(country = "Serbia"):
         page = get_next_page_with_delay(page)
 
 
-trade_spider()
+trade_spider('Montenegro')
