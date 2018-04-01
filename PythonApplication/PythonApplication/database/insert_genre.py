@@ -23,11 +23,16 @@ def func(arg):
     else:
         cursor = conn.cursor()
         cursor.execute("use eestec;")
-        s = "INSERT INTO genre (genre_name) VALUES('%s\');" % (arg)
-        print(s)
-        cursor.execute(s)
-        # Cleanup
-        conn.commit()
+        q = "Select * from genre where genre_name='%s\';" % (arg)
+        cursor.execute(q)
+        cursor.fetchall()
+        rows_count = cursor.rowcount
+        if (rows_count==0): 
+            s = "INSERT INTO genre (genre_name) VALUES('%s\');" % (arg)
+            print(s)
+            cursor.execute(s)
+            # Cleanup
+            conn.commit()
         cursor.close()
         conn.close()
         return "OK"

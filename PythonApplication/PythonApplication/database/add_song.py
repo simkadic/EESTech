@@ -29,7 +29,7 @@ def func(album, song, minutes, seconds):
         s += "%s, " % (seconds)
         s += "'%s\' " % (song)
         s += "FROM album WHERE "
-        s += "album_name='%s\' ;" % (album)
+        s += "album_name='%s' ;" % (album)
         print(s)
         cursor.execute(s)
         # Cleanup

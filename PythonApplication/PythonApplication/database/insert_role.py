@@ -23,11 +23,16 @@ def func(arg):
     else:
         cursor = conn.cursor()
         cursor.execute("use eestec;")
-        s = "INSERT INTO role (role_name) VALUES('%s\');" % (arg)
-        print(s)
-        cursor.execute(s)
-        # Cleanup
-        conn.commit()
+        q = "Select * from role where role_name='%s\';" % (arg)
+        cursor.execute(q)
+        cursor.fetchall()
+        rows_count = cursor.rowcount
+        if (rows_count==0): 
+            s = "INSERT INTO role (role_name) VALUES('%s\');" % (arg)
+            print(s)
+            cursor.execute(s)
+            # Cleanup
+            conn.commit()
         cursor.close()
         conn.close()
         return "OK"

@@ -1,4 +1,4 @@
-def func(arg):
+def connect():
     import mysql.connector
     from mysql.connector import errorcode
 
@@ -21,7 +21,4 @@ def func(arg):
         else:
             print(err)
     else:
-        album
-        cursor.close()
-        conn.close()
-        return "OK"
+        return conn

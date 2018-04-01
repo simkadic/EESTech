@@ -1,6 +1,8 @@
+import mysql.connector
+from mysql.connector import errorcode
+
+
 def func(arg):
-    import mysql.connector
-    from mysql.connector import errorcode
 
     config = {
         'host': 'eestec.mysql.database.azure.com',
@@ -23,11 +25,16 @@ def func(arg):
     else:
         cursor = conn.cursor()
         cursor.execute("use eestec;")
-        s = "INSERT INTO album (album_name) VALUES('%s\');" % (arg)
-        print(s)
-        cursor.execute(s)
-        # Cleanup
-        conn.commit()
+        q = "Select * from album where album_name='%s\';" % (arg)
+        cursor.execute(q)
+        cursor.fetchall()
+        rows_count = cursor.rowcount
+        if (rows_count==0): 
+            s = "INSERT INTO album (author_name) VALUES('%s\');" % (arg)
+            print(s)
+            cursor.execute(s)
+            # Cleanup
+            conn.commit()
         cursor.close()
         conn.close()
         return "OK"
